@@ -1,0 +1,170 @@
+import { useContext, useEffect, useState } from "react";
+import { DataContainer } from "../App";
+import {
+  Col,
+  Container,
+  Row,
+  Modal,
+  Button,
+  InputGroup,
+  Form,
+} from "react-bootstrap";
+
+const Cart = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+  const { CartItem, setCartItem, addToCart, decreaseQty, deleteProduct } =
+    useContext(DataContainer);
+  const totalPrice = CartItem.reduce(
+    (price, item) => price + item.qty * item.price,
+    0
+  );
+
+  const [pincode, setPincode] = useState("");
+  const [pincodeMessage, setPincodeMessage] = useState("");
+
+  const availablePincodes = ["560001", "560002"];
+  const checkAvailability = () => {
+    if (availablePincodes.includes(pincode)) {
+      setPincodeMessage("Service is available in your pincode!");
+    } else {
+      setPincodeMessage("Sorry, service is not available in your pincode.");
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (CartItem.length === 0) {
+      const storedCart = localStorage.getItem("cartItem");
+      setCartItem(JSON.parse(storedCart));
+    }
+  }, []);
+  return (
+    <section className="cart-items">
+      <Container>
+        <Row className="justify-content-center">
+          <Col md={8}>
+            {CartItem.length === 0 && (
+              <h1 className="no-items product">No Items are add in Cart</h1>
+            )}
+            {CartItem.map((item) => {
+              const productQty = item.price * item.qty;
+              return (
+                <div className="cart-list" key={item.id}>
+                  <Row>
+                    <Col className="image-holder" sm={4} md={3}>
+                      <img src={item.imgUrl} alt="" />
+                    </Col>
+                    <Col sm={8} md={9}>
+                      <Row className="cart-content justify-content-center">
+                        <Col xs={12} sm={9} className="cart-details">
+                          <h3>{item.productName}</h3>
+                          <h4>
+                            ${item.price}.00 * {item.qty}
+                            <span>${productQty}.00</span>
+                          </h4>
+                        </Col>
+                        <Col xs={12} sm={3} className="cartControl">
+                          <button
+                            className="incCart"
+                            onClick={() => addToCart(item)}
+                          >
+                            <i className="fa-solid fa-plus"></i>
+                          </button>
+                          <button
+                            className="desCart"
+                            onClick={() => decreaseQty(item)}
+                          >
+                            <i className="fa-solid fa-minus"></i>
+                          </button>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <button
+                      className="delete"
+                      onClick={() => deleteProduct(item)}
+                    >
+                      <ion-icon name="close"></ion-icon>
+                    </button>
+                  </Row>
+                </div>
+              );
+            })}
+          </Col>
+          <Col md={4}>
+            <div className="cart-total">
+              <h2>Cart Summary</h2>
+              <div className=" d_flex">
+                <h4>Total Price :</h4>
+                <h3>${totalPrice}.00</h3>
+              </div>
+              {/* Styled Checkout Button */}
+              <Button
+                onClick={handleShow}
+                style={{
+                  marginTop: "15px",
+                  backgroundColor: "#4CAF50",
+                  border: "none",
+                  padding: "10px 20px",
+                  borderRadius: "5px",
+                  boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+                  fontSize: "16px",
+                }}
+              >
+                Checkout
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      {/* Checkout Form Modal */}
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Checkout Form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formPincode">
+              <InputGroup>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Pincode"
+                  value={pincode}
+                  onChange={(e) => setPincode(e.target.value)}
+                />
+                <Button variant="outline-secondary" onClick={checkAvailability}>
+                  Check Availability
+                </Button>
+              </InputGroup>
+              <Form.Text className="text-muted">{pincodeMessage}</Form.Text>
+                <br />
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter your name" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" placeholder="Enter your email" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Address</Form.Label>
+              <Form.Control type="text" placeholder="Enter your address" />
+            </Form.Group>
+            {/* ... [Any other form fields you need] */}
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Confirm Purchase
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </section>
+  );
+};
+
+export default Cart;
