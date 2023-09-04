@@ -54,12 +54,12 @@ export const SliderData = [
 
 export const serviceData = [
   {
-    icon: <ion-icon name="car"></ion-icon>,
+    icon: <ion-icon name="globe-outline"></ion-icon>,
     title: "Book Your Test Online",
     bg: "#fdefe6",
   },
   {
-    icon: <ion-icon name="card"></ion-icon>,
+    icon: <ion-icon name="home-outline"></ion-icon>,
     title: "Home Sample Pick Up",
     bg: "#ceebe9",
   },
@@ -69,13 +69,11 @@ export const serviceData = [
     bg: "#e2f2b2",
   },
   {
-    icon: <ion-icon name="headset"></ion-icon>,
+    icon: <ion-icon name="newspaper-outline"></ion-icon>,
     title: "View Your Reports Online",
     bg: "#d6e5fb",
   },
 ];
-
-
 
 export const discoutProducts = [
   {
@@ -142,96 +140,120 @@ export const discoutProducts = [
     avgRating: 4.7,
   },
   {
-    id: "08",
-    productName: "Baltsar Chair",
-    imgUrl: productImg08,
-    category: "chair",
-    price: 89,
-    discount: 15,
-    shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
-    reviews: [
+    id: "01",
+    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    includedTests: [
       {
-        rating: 4.6,
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        categoryName: "Thyroid Profile",
+        tests: ["01", "02"],
       },
       {
-        rating: 4.9,
+        categoryName: "Lipid Profile",
+        tests: ["03", "04", "05"],
+      },
+      // ... more categories can be added similarly
+    ],
+    imgUrl: populartest01,
+    category: "sofa",
+    price: 1199.0,
+    discount: 30,
+    shortDesc: "Sample Type: Blood",
+    description:
+      "Full body checkup is an essential health test that can detect hidden diseases. Reliable pathology labs like Thyrocare offer a perfect solution to this challenge by providing comprehensive health packages with blood test at home services. These preventive health checkups include specific tests recommended by certified doctors and expert pathologists. It is a great way to stay on top of your health and take proactive measures to prevent any potential health issues.",
+    reviews: [
+      {
+        rating: 4.7,
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
     ],
-    avgRating: 4.7,
+    avgRating: 4.5,
   },
   {
-    id: "09",
-    productName: "Helmar Chair",
-    imgUrl: productImg09,
-    category: "chair",
-    price: 112,
-    discount: 35,
-    shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
-    reviews: [
+    id: "01",
+    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    includedTests: [
       {
-        rating: 4.6,
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        categoryName: "Thyroid Profile",
+        tests: ["01", "02"],
       },
       {
-        rating: 4.9,
+        categoryName: "Lipid Profile",
+        tests: ["03", "04", "05"],
+      },
+      // ... more categories can be added similarly
+    ],
+    imgUrl: populartest01,
+    category: "sofa",
+    price: 1199.0,
+    discount: 30,
+    shortDesc: "Sample Type: Blood",
+    description:
+      "Full body checkup is an essential health test that can detect hidden diseases. Reliable pathology labs like Thyrocare offer a perfect solution to this challenge by providing comprehensive health packages with blood test at home services. These preventive health checkups include specific tests recommended by certified doctors and expert pathologists. It is a great way to stay on top of your health and take proactive measures to prevent any potential health issues.",
+    reviews: [
+      {
+        rating: 4.7,
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
     ],
-    avgRating: 4.7,
+    avgRating: 4.5,
   },
   {
-    id: "12",
-    productName: "Realme 8",
-    imgUrl: phone03,
-    category: "mobile",
-    price: 599,
-    discount: 10,
-    shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
-    reviews: [
+    id: "01",
+    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    includedTests: [
       {
-        rating: 4.8,
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        categoryName: "Thyroid Profile",
+        tests: ["01", "02"],
       },
       {
-        rating: 4.9,
+        categoryName: "Lipid Profile",
+        tests: ["03", "04", "05"],
+      },
+      // ... more categories can be added similarly
+    ],
+    imgUrl: populartest01,
+    category: "sofa",
+    price: 1199.0,
+    discount: 30,
+    shortDesc: "Sample Type: Blood",
+    description:
+      "Full body checkup is an essential health test that can detect hidden diseases. Reliable pathology labs like Thyrocare offer a perfect solution to this challenge by providing comprehensive health packages with blood test at home services. These preventive health checkups include specific tests recommended by certified doctors and expert pathologists. It is a great way to stay on top of your health and take proactive measures to prevent any potential health issues.",
+    reviews: [
+      {
+        rating: 4.7,
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
     ],
-    avgRating: 4.8,
+    avgRating: 4.5,
   },
   {
-    id: "13",
-    productName: "One Plus Nord",
-    imgUrl: phone04,
-    category: "mobile",
-    price: 799,
-    discount: 5,
-    shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
-    reviews: [
+    id: "01",
+    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    includedTests: [
       {
-        rating: 4.8,
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        categoryName: "Thyroid Profile",
+        tests: ["01", "02"],
       },
       {
-        rating: 4.9,
+        categoryName: "Lipid Profile",
+        tests: ["03", "04", "05"],
+      },
+      // ... more categories can be added similarly
+    ],
+    imgUrl: populartest01,
+    category: "sofa",
+    price: 1199.0,
+    discount: 30,
+    shortDesc: "Sample Type: Blood",
+    description:
+      "Full body checkup is an essential health test that can detect hidden diseases. Reliable pathology labs like Thyrocare offer a perfect solution to this challenge by providing comprehensive health packages with blood test at home services. These preventive health checkups include specific tests recommended by certified doctors and expert pathologists. It is a great way to stay on top of your health and take proactive measures to prevent any potential health issues.",
+    reviews: [
+      {
+        rating: 4.7,
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       },
     ],
-    avgRating: 4.8,
+    avgRating: 4.5,
   },
 ];
 

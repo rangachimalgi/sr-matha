@@ -17,7 +17,6 @@ const Home = () => {
       <SliderHome/>
       <Wrapper />
       <Section title="Popular Packages" bgColor="#f6f9fc" productItems={discoutProducts} addToCart={addToCart}/>
-      <Section title="Best Sales" bgColor="#f6f9fc" productItems={bestSales} addToCart={addToCart}/>
     </Fragment>
   )
 }

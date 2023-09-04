@@ -9,7 +9,7 @@ const Footer = () => {
         <Row className="footer-row">
           <Col md={3} sm={5} className="box">
             <div className="logo">
-              <ion-icon name="bag"></ion-icon>
+              <ion-icon name="medkit-outline"></ion-icon>{" "}
               <h1>BookTestNearMe</h1>
             </div>
             <p>
