@@ -120,6 +120,16 @@ const NavBar = () => {
                 <span className="nav-link-label">Cart</span>
               </Link>
             </Nav.Item>
+            <Nav.Item>
+              <Link
+                aria-label="Go to Admin Panel"
+                className="navbar-link"
+                to="/admin"
+                onClick={() => setExpand(false)}
+              >
+                <span className="nav-link-label">Admin Panel</span>
+              </Link>
+            </Nav.Item>
             <Nav.Item className="expanded-cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

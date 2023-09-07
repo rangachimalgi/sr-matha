@@ -9,10 +9,15 @@ import {
   InputGroup,
   Form,
 } from "react-bootstrap";
+import axios from "axios";
 
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
-
+  const [orderData, setOrderData] = useState({
+    name: "",
+    email: "",
+    address: "",
+  });
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
   const { CartItem, setCartItem, addToCart, decreaseQty, deleteProduct } =
@@ -41,6 +46,42 @@ const Cart = () => {
       setCartItem(JSON.parse(storedCart));
     }
   }, []);
+
+  const handleSubmitOrder = async () => {
+    if (!availablePincodes.includes(pincode)) {
+      alert("Service is not available in your pincode.");
+      return;
+    }
+
+    const orderForm = document.querySelector("form");
+    const formData = new FormData(orderForm);
+
+    const orderDetails = {
+      pincode: formData.get("pincode"),
+      name: formData.get("name"),
+      email: formData.get("email"),
+      address: formData.get("address"),
+      cartItems: CartItem,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/orders",
+        orderDetails
+      );
+      if (response.data.success) {
+        setCartItem([]);
+        handleClose();
+        // Navigate to success page or show success message here
+      } else {
+        // Handle error (e.g., show an error message to the user)
+      }
+    } catch (error) {
+      console.error("Error submitting order:", error);
+      // Handle error (e.g., show an error message to the user)
+    }
+  };
+
   return (
     <section className="cart-items">
       <Container>
@@ -62,8 +103,8 @@ const Cart = () => {
                         <Col xs={12} sm={9} className="cart-details">
                           <h3>{item.productName}</h3>
                           <h4>
-                            ${item.price}.00 * {item.qty}
-                            <span>${productQty}.00</span>
+                            {`\u20B9${item.price}.00`} * {item.qty}
+                            <span>{`\u20B9${productQty}.00`}</span>
                           </h4>
                         </Col>
                         <Col xs={12} sm={3} className="cartControl">
@@ -98,7 +139,7 @@ const Cart = () => {
               <h2>Cart Summary</h2>
               <div className=" d_flex">
                 <h4>Total Price :</h4>
-                <h3>${totalPrice}.00</h3>
+                <h3>{`\u20B9${totalPrice}.00`}</h3>
               </div>
               {/* Styled Checkout Button */}
               <Button
@@ -133,23 +174,60 @@ const Cart = () => {
                   placeholder="Enter Pincode"
                   value={pincode}
                   onChange={(e) => setPincode(e.target.value)}
+                  name="pincode"
                 />
                 <Button variant="outline-secondary" onClick={checkAvailability}>
                   Check Availability
                 </Button>
               </InputGroup>
               <Form.Text className="text-muted">{pincodeMessage}</Form.Text>
-                <br />
+              <br />
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your name" />
+              <Form.Control
+                type="text"
+                placeholder="Enter your name"
+                value={orderData.name}
+                onChange={(e) =>
+                  setOrderData((prevState) => ({
+                    ...prevState,
+                    name: e.target.value,
+                  }))
+                }
+                name="name"
+              />{" "}
+              {/* added name attribute */}
             </Form.Group>
             <Form.Group>
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter your email" />
+              <Form.Control
+                type="email"
+                placeholder="Enter your email"
+                value={orderData.email}
+                onChange={(e) =>
+                  setOrderData((prevState) => ({
+                    ...prevState,
+                    email: e.target.value,
+                  }))
+                }
+                name="email"
+              />{" "}
+              {/* added name attribute */}
             </Form.Group>
             <Form.Group>
               <Form.Label>Address</Form.Label>
-              <Form.Control type="text" placeholder="Enter your address" />
+              <Form.Control
+                type="text"
+                placeholder="Enter your address"
+                value={orderData.address}
+                onChange={(e) =>
+                  setOrderData((prevState) => ({
+                    ...prevState,
+                    address: e.target.value,
+                  }))
+                }
+                name="address"
+              />{" "}
+              {/* added name attribute */}
             </Form.Group>
             {/* ... [Any other form fields you need] */}
           </Form>
@@ -158,7 +236,9 @@ const Cart = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleSubmitOrder}>
+            {" "}
+            {/* replaced handleClose with handleSubmitOrder */}
             Confirm Purchase
           </Button>
         </Modal.Footer>

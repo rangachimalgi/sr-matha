@@ -6,6 +6,8 @@ import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DataComponent from "./components/DataComponent";
+import AdminPanel from "./components/AdminPanel";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Health = lazy(() => import("./pages/HealthPackagesDetails"));
@@ -90,6 +92,8 @@ function App() {
             <Route path="/health-list" element={<HealthList />} />
             <Route path="/health/:id" element={<Health />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/admin" element={<AdminPanel />} />
+
           </Routes>
           <Footer />
         </Router>

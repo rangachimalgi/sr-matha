@@ -2,7 +2,7 @@ import Select from 'react-select';
 import { products } from '../utils/products';
 
 const options = [
-    { value: "sofa", label: "Sofa" },
+    { value: "Blood", label: "Blood" },
     { value: "chair", label: "Chair" },
     { value: "watch", label: "Watch" },
     { value: "mobile", label: "Mobile" },
