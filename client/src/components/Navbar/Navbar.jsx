@@ -3,10 +3,17 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import "./navbar.css";
 import { DataContainer } from "../../App";
 import { Link } from "react-router-dom";
+import LoginModal from "../LoginModal";
 const NavBar = () => {
   const { CartItem, setCartItem } = useContext(DataContainer);
   const [expand, setExpand] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // To check if the user is logged in
+  const [showLoginModal, setShowLoginModal] = useState(false); // To manage the modal visibility
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("role") || null
+  );
+
   // fixed Header
   function scrollHandler() {
     if (window.scrollY >= 100) {
@@ -20,6 +27,20 @@ const NavBar = () => {
     if (CartItem.length === 0) {
       const storedCart = localStorage.getItem("cartItem");
       setCartItem(JSON.parse(storedCart));
+    }
+  }, []);
+
+  // This useEffect handles user authentication status and role
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+
+    if (token) {
+      setIsLoggedIn(true);
+    }
+
+    if (role) {
+      setUserRole(role);
     }
   }, []);
   return (
@@ -120,22 +141,28 @@ const NavBar = () => {
                 <span className="nav-link-label">Cart</span>
               </Link>
             </Nav.Item>
-            <Nav.Item>
-              <Link
-                aria-label="Go to Admin Panel"
-                className="navbar-link"
-                to="/admin"
-                onClick={() => setExpand(false)}
-              >
-                <span className="nav-link-label">Admin Panel</span>
-              </Link>
-            </Nav.Item>
+
+            {userRole === "admin" && (
+              <Nav.Item>
+                <Link
+                  aria-label="Go to Admin Panel"
+                  className="navbar-link"
+                  to="/admin"
+                  onClick={() => setExpand(false)}
+                >
+                  <span className="nav-link-label">Admin Panel</span>
+                </Link>
+              </Nav.Item>
+            )}
             <Nav.Item className="expanded-cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="black"
                 className="nav-icon"
+                onClick={() =>
+                  !isLoggedIn ? setShowLoginModal(true) : setIsLoggedIn(false)
+                }
               >
                 <path
                   fillRule="evenodd"
@@ -161,6 +188,16 @@ const NavBar = () => {
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
+        <LoginModal
+          setIsLoggedIn={setIsLoggedIn}
+          setUserRole={setUserRole}
+          show={showLoginModal}
+          onHide={() => setShowLoginModal(false)}
+          onLoginSuccess={() => {
+            setShowLoginModal(false);
+            setIsLoggedIn(true);
+          }}
+        />
       </Container>
     </Navbar>
   );

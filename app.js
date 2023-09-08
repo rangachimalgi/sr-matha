@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import connectDB from './config/db.js'
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js"
+import orderRoutes from "./routes/orderRoutes.js"
 
 // Load environment variables from .env
 dotenv.config();
@@ -16,24 +17,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//use specific routes
+
 // Define your routes
 app.use('/api/auth', authRoutes)
-
-app.get('/api/data', (req, res) => {
-  const data = ['item1', 'item2', 'item3'];
-  res.json(data);
-});
-
-// Define a POST route for processing orders
-app.post('/api/orders', (req, res) => {
-    const orderDetails = req.body;
-    
-    // Process the order here (e.g., save to database)
-    console.log('Received order:', orderDetails);
-    
-    // Send a response back to the frontend
-    res.json({ success: true, message: 'Order processed successfully' });
-});
+app.use('/api/orders', orderRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 8080;
