@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Dropdown } from "react-bootstrap";
 import "./navbar.css";
 import { DataContainer } from "../../App";
 import { Link } from "react-router-dom";
@@ -13,6 +13,13 @@ const NavBar = () => {
   const [userRole, setUserRole] = useState(
     localStorage.getItem("role") || null
   );
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    setIsLoggedIn(false);
+    setUserRole(null);
+  };
 
   // fixed Header
   function scrollHandler() {
@@ -154,6 +161,7 @@ const NavBar = () => {
                 </Link>
               </Nav.Item>
             )}
+
             <Nav.Item className="expanded-cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -186,6 +194,32 @@ const NavBar = () => {
                 </svg>
               </Link>
             </Nav.Item>
+
+            {/* Here's the dropdown addition */}
+            {isLoggedIn && (
+              <Dropdown alignRight>
+                <Dropdown.Toggle
+                  variant="link"
+                  className="navbar-link"
+                  id="dropdown-basic"
+                >
+                  Profile
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  {userRole === "admin" && (
+                    <Dropdown.Item
+                      as={Link}
+                      to="/admin"
+                      onClick={() => setExpand(false)}
+                    >
+                      Admin Panel
+                    </Dropdown.Item>
+                  )}
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
         <LoginModal

@@ -8,10 +8,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DataComponent from "./components/DataComponent";
 import AdminPanel from "./components/AdminPanel";
+import ViewOrders from "./components/ViewOrders";
+import ViewUsers from "./components/ViewUsers";
+import TotalRevenue from "./components/TotalRevenue";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Health = lazy(() => import("./pages/HealthPackagesDetails"));
-const HealthList = lazy(() => import("./pages/HealthPackageList"))
+const HealthList = lazy(() => import("./pages/HealthPackageList"));
 
 const Cart = lazy(() => import("./pages/Cart"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
@@ -92,8 +95,10 @@ function App() {
             <Route path="/health-list" element={<HealthList />} />
             <Route path="/health/:id" element={<Health />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/admin" element={<AdminPanel />} />
-
+            <Route path="/admin/*" element={<AdminPanel />} />
+            <Route path="/admin/view-orders" element={<ViewOrders />} />
+            <Route path="/admin/view-users" element={<ViewUsers />} />
+            <Route path="/admin/total-revenue" element={<TotalRevenue />} />
           </Routes>
           <Footer />
         </Router>

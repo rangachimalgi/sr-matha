@@ -1,53 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-function AdminPanel() {
-  const [orders, setOrders] = useState([]);
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { DataContainer } from "../App";
+import axios from "axios";
+function AdminDashboard() {
+  const { CartItem } = useContext(DataContainer);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    async function fetchOrders() {
+    async function fetchUsers() {
       try {
-        const response = await axios.get('http://localhost:8080/api/orders');
-        setOrders(response.data);
+        const response = await axios.get(
+          "http://localhost:8080/api/auth/users"
+        ); // adjust the URL to your backend endpoint
+        setUsers(response.data);
       } catch (error) {
-        console.error("Error fetching orders:", error);
+        console.error("Error fetching users:", error);
       }
     }
 
-    fetchOrders();
+    fetchUsers();
   }, []);
+
+  
+
+  // Calculate total revenue
+  const totalRevenue = CartItem.reduce(
+    (acc, curr) => acc + curr.price * curr.qty,
+    0
+  );
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Admin Panel - View Orders</h2>
-      {orders.length === 0 ? (
-        <p className="alert alert-info">No orders found.</p>
-      ) : (
-        <table className="table table-striped">
+      <h2 className="mb-4">Admin Panel</h2>
+
+      <div className="col-md-4">
+        <div className="card bg-info text-white mb-3">
+          <div className="card-body">
+            <h5 className="card-title">Total Users</h5>
+            <h3>{users.length}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-4">
+          <Link to="/admin/view-orders" className="text-decoration-none">
+            <div className="card bg-primary text-white mb-3">
+              <div className="card-body">
+                <h5 className="card-title">View Orders</h5>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="col-md-4">
+          <Link to="/admin/view-users" className="text-decoration-none">
+            <div className="card bg-success text-white mb-3">
+              <div className="card-body">
+                <h5 className="card-title">View Users</h5>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="col-md-4">
+          <div className="card bg-danger text-white mb-3">
+            <div className="card-body">
+              <h5 className="card-title">Total Revenue</h5>
+              <h3>${totalRevenue.toFixed(2)}</h3>{" "}
+              {/* Assuming revenue is in dollars */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* User Table */}
+      <div className="mt-5">
+        <h3>Users List</h3>
+        <table className="table">
           <thead>
             <tr>
-              <th>Order ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Products</th>
+              <th scope="col">#</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map(order => (
-              <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.name}</td>
-                <td>{order.email}</td>
-                <td>{order.address}</td>
-                <td>{order.cartItems.map(item => item.productName).join(', ')}</td>
+            {users.map((user, index) => (
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      )}
+      </div>
     </div>
   );
 }
 
-export default AdminPanel;
+export default AdminDashboard;
