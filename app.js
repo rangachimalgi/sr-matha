@@ -1,9 +1,18 @@
-import express from 'express';
-import dotenv from "dotenv"
-import connectDB from './config/db.js'
+import express from "express";
+import dotenv from "dotenv";
+import path, { dirname } from "path";
+import multer from "multer";
+import { fileURLToPath } from "url";
+import connectDB from "./config/db.js";
 import cors from "cors";
-import authRoutes from "./routes/authRoutes.js"
-import orderRoutes from "./routes/orderRoutes.js"
+import authRoutes from "./routes/authRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const storage = multer.memoryStorage(); // This stores the file in memory as buffer
+const upload = multer({ storage: storage });
 
 // Load environment variables from .env
 dotenv.config();
@@ -20,8 +29,9 @@ app.use(express.json());
 //use specific routes
 
 // Define your routes
-app.use('/api/auth', authRoutes)
-app.use('/api/orders', orderRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/orders", orderRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Start the server
 const PORT = process.env.PORT || 8080;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import UploadReportForm from "./UploadReportForm.js";
 
 function ViewOrders() {
-    console.log("reached the view orders");
+  console.log("reached the view orders");
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -32,6 +33,9 @@ function ViewOrders() {
               <th>Email</th>
               <th>Address</th>
               <th>Products</th>
+              <th>Upload Report</th>
+              <th>Status</th>
+              <th>Report</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +47,23 @@ function ViewOrders() {
                 <td>{order.address}</td>
                 <td>
                   {order.cartItems.map((item) => item.productName).join(", ")}
+                </td>
+                <td>
+                  <UploadReportForm orderId={order._id} />
+                </td>
+                <td>{order.status}</td> 
+                <td>
+                  {order.reportLink ? (
+                    <a
+                      href={`http://localhost:8080${order.reportLink}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Report
+                    </a>
+                  ) : (
+                    "Not uploaded"
+                  )}
                 </td>
               </tr>
             ))}

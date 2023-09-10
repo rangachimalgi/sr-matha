@@ -26,7 +26,19 @@ const orderSchema = new mongoose.Schema({
         shortDesc: String,
         description: String,
         qty: Number
-    }]
+    }],
+    reportLink: {
+        type: String,
+        default: ''  
+    },
+    reportLink: {
+        type: String,
+        default: null
+    },
+      status: {
+        type: String,
+        default: "Pending"  
+    }
 });
 
 const Order = mongoose.model('Order', orderSchema);
