@@ -11,7 +11,7 @@ const HealthPackagesList = () => {
                 {healthPackagesArray.map(pkg => (
                     <div key={pkg.id} className="package-card">
                         <Link to={`/health/${pkg.id}`} className="package-link">
-                            <img src={populartest01} alt={pkg.productName} className="package-image" />
+                            <img src={pkg.imgUrl} alt={pkg.productName} className="package-image" />
                             <div className="package-name">{pkg.productName}</div>
                         </Link>
                     </div>

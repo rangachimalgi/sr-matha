@@ -37,20 +37,28 @@ import populartest01 from "../Images/test-image-01.avif";
 import slider01 from "../Images/slide-show-01.png";
 import slider02 from "../Images/slide-show-02.jpg";
 import bloodTest01 from "../Images/blood-test-01.avif";
+import FemaleAdvancePackage from "../Images/FemaleAdvancePackage.jpg"
+import maleadvancepackage from "../Images/maleadvancepackage.jpg"
+import FemaleSeniorCitizen from "../Images/FemaleSeniorCitizen.jpg"
+import seniorcitizen from "../Images/seniorcitizen.jpg"
+import GenaralHealthPackage from "../Images/GenaralHealthPackage.jpg"
+import labtestslider from "../Images/labtestslider.png"
+import Untitleddesign from "../Images/Untitleddesign.png"
 
 export const SliderData = [
   {
     id: 1,
     title: "Book Your Test Now",
     desc: "Book Your Test Now near by to your place .",
-    cover: slider01,
+    cover: labtestslider,
   },
   {
     id: 2,
     title: "We serve all around the country",
     desc: "Book your Test now.",
-    cover: slider02,
+    cover: Untitleddesign,
   },
+
 ];
 
 export const serviceData = [
@@ -108,7 +116,7 @@ export const discoutProducts = [
   },
   {
     id: "02",
-    productName: "FEMALE ADVANCED HEALTH PACKAGE (108 Tests)",
+    productName: "Female Advanced Health Package (108 Tests)",
     includedTests: [
       {
         categoryName: "Thyroid Profile",
@@ -120,9 +128,9 @@ export const discoutProducts = [
       },
       // ... more categories can be added similarly
     ],
-    imgUrl: populartest01,
+    imgUrl: FemaleAdvancePackage,
     category: "sofa",
-    price: 253,
+    price: 2499,
     discount: 20,
     shortDesc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
@@ -142,7 +150,7 @@ export const discoutProducts = [
   },
   {
     id: "01",
-    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    productName: "Male Advanced Health Package (105 Tests)",
     includedTests: [
       {
         categoryName: "Thyroid Profile",
@@ -154,7 +162,36 @@ export const discoutProducts = [
       },
       // ... more categories can be added similarly
     ],
-    imgUrl: populartest01,
+    imgUrl: maleadvancepackage,
+    category: "sofa",
+    price: 1199.0,
+    discount: 30,
+    shortDesc: "Sample Type: Blood",
+    description:
+      "The MALE ADVANCED HEALTH PACKAGE includes 105 vital tests to screen health status, such as Cardiac Risk Markers, Complete Hemogram, Diabetes, Iron, Lipid, Liver, Kidney, Thyroid, Vitamins, Pancreatic, Electrolytes, CEA (a type of Tumour Marker), Prostate Cancer (PSA), and Hormones. This package is recommended for men aged between 25 and 50 years.",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "01",
+    productName: "Female Senior Citizen Health Package (108 Tests)",
+    includedTests: [
+      {
+        categoryName: "Thyroid Profile",
+        tests: ["01", "02"],
+      },
+      {
+        categoryName: "Lipid Profile",
+        tests: ["03", "04", "05"],
+      },
+      // ... more categories can be added similarly
+    ],
+    imgUrl: FemaleSeniorCitizen,
     category: "sofa",
     price: 1199.0,
     discount: 30,
@@ -171,7 +208,7 @@ export const discoutProducts = [
   },
   {
     id: "01",
-    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    productName: "Male Senior Citizen Health Package (108 Tests)",
     includedTests: [
       {
         categoryName: "Thyroid Profile",
@@ -183,7 +220,7 @@ export const discoutProducts = [
       },
       // ... more categories can be added similarly
     ],
-    imgUrl: populartest01,
+    imgUrl: seniorcitizen,
     category: "sofa",
     price: 1199.0,
     discount: 30,
@@ -200,7 +237,7 @@ export const discoutProducts = [
   },
   {
     id: "01",
-    productName: "BASIC HEALTH PACKAGE (66 Tests)",
+    productName: "General Health Package (111)",
     includedTests: [
       {
         categoryName: "Thyroid Profile",
@@ -212,36 +249,7 @@ export const discoutProducts = [
       },
       // ... more categories can be added similarly
     ],
-    imgUrl: populartest01,
-    category: "sofa",
-    price: 1199.0,
-    discount: 30,
-    shortDesc: "Sample Type: Blood",
-    description:
-      "Full body checkup is an essential health test that can detect hidden diseases. Reliable pathology labs like Thyrocare offer a perfect solution to this challenge by providing comprehensive health packages with blood test at home services. These preventive health checkups include specific tests recommended by certified doctors and expert pathologists. It is a great way to stay on top of your health and take proactive measures to prevent any potential health issues.",
-    reviews: [
-      {
-        rating: 4.7,
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      },
-    ],
-    avgRating: 4.5,
-  },
-  {
-    id: "01",
-    productName: "BASIC HEALTH PACKAGE (66 Tests)",
-    includedTests: [
-      {
-        categoryName: "Thyroid Profile",
-        tests: ["01", "02"],
-      },
-      {
-        categoryName: "Lipid Profile",
-        tests: ["03", "04", "05"],
-      },
-      // ... more categories can be added similarly
-    ],
-    imgUrl: populartest01,
+    imgUrl: GenaralHealthPackage,
     category: "sofa",
     price: 1199.0,
     discount: 30,
@@ -296,115 +304,115 @@ export const products = [
   },
   {
     id: "26",
-    productName: "HBA1C",
+    productName: "ERYTHROCYTE SEDIMENTATION RATE (ESR)",
     imgUrl: bloodTest01,
     category: "sofa",
-    price: 253,
+    price: 200,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "An erythrocyte sedimentation rate (ESR) is a type of blood test that measures how quickly erythrocytes (red blood cells) settle at the bottom of a test tube that contains a blood sample.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "An erythrocyte sedimentation rate (ESR) is a type of blood test that measures how quickly erythrocytes (red blood cells) settle at the bottom of a test tube that contains a blood sample. Normally, red blood cells settle relatively slowly. A faster-than-normal rate may indicate inflammation in the body.",
   },
   {
     id: "04",
-    productName: "Fasting Blood Sugar (FBS)",
+    productName: "FREE THYROXINE (FT4)",
     imgUrl: bloodTest01,
     category: "sofa",
-    price: 163,
+    price: 310,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "FT4 and FT3 are also two of the most important tests. Knowingly, T3 only represents just 5% of normal thyroid hormone.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "FT4 and FT3 are also two of the most important tests. Knowingly, T3 only represents just 5% of normal thyroid hormone. Measurement of free triiodothyronine is the prime reason why this test is run. Decreasing amount of FT4 may cause hypothyroidism, which may cause several types of disorders. FT4 is known for comprising a little fraction of total thyroxine that remains available to the body tissues. Free T3 and T4 blood tests are included in all kinds of FT4 tests. You must inform your doctor before the test if you are already on medication or having any kind of allergies. No other specific preparations are needed for these tests. However, 10-12 hours of complete fasting is necessary before appearing for the test. The test results may vary depending upon gender and age or the health condition of the patient.",
   },
 
   {
     id: "05",
-    productName: "HBA1C",
+    productName: "C-REACTIVE PROTEIN (CRP)",
     imgUrl: bloodTest01,
     category: "sofa",
-    price: 163,
+    price: 500,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "C-reactive protein test or CRP test helps to detect lower levels of the protein in the bloodstream. The level increases in case of inflammation. Determining the potentiality of inflammation is possible through this test.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "C-reactive protein test or CRP test helps to detect lower levels of the protein in the bloodstream. The level increases in case of inflammation. Determining the potentiality of inflammation is possible through this test. In case you are going through acute conditions that can cause inflammation, experts can recommend you to go for a CRP blood test. Doctors say, CRP test in Covid is very important. You can now easily avail the facility of CRP test at home because CRP test cost is not really too high.",
   },
 
   {
     id: "06",
-    productName: "HBA1C",
+    productName: "BETA HCG",
     imgUrl: bloodTest01,
     category: "sofa",
-    price: 163,
+    price: 610,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "HCG represents human chorionic gonadotropin, a hormone which is produced during pregnancy.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "HCG represents human chorionic gonadotropin, a hormone which is produced during pregnancy. The Free Beta HCG test helps to detect the presence of HCG in your blood.",
   },
   {
     id: "07",
-    productName: "HBA1C",
+    productName: "PROLACTIN (PRL)",
     imgUrl: bloodTest01,
     category: "chair",
-    price: 99,
+    price: 475,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "This test is performed to measure the amount of Prolactin in Blood. Prolactin is a specific type of hormone that is produced by the Pituitary gland.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "This test is performed to measure the amount of Prolactin in Blood. Prolactin is a specific type of hormone that is produced by the Pituitary gland. For both men and women, this hormone plays a very important role to maintain a proper reproductive system. The test is mostly run on women in case of irregular menstrual period or infertility issues. Abnormal growth of body, facial hair, decreased sex drive are some of the symptoms of the crisis of Prolactin. No specific preparations are required to appear for this test. However, the perfect time to collect blood samples for this test is 3-4 hours after waking up in the morning as prolactin levels in the blood may vary over a 24 hours span. The test results may vary depending on age, gender and health condition. Low prolactin level may cause a disorder named hypopituitarism. Similarly, high prolactin level may cause some types of physical complexions. However, high prolactin levels are normal in pregnant women.",
   },
 
   {
     id: "27",
-    productName: "HBA1C",
+    productName: "FREE TRIIODOTHYRONINE (FT3)",
     imgUrl: bloodTest01,
     category: "sofa",
-    price: 173,
+    price: 285,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "This test is also known as Triiodothyronine blood test. This test is merely run to measure the actual amount of free Triiodothyronine or FT-3 in blood.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "This test is also known as Triiodothyronine blood test. This test is merely run to measure the actual amount of free Triiodothyronine or FT-3 in blood. Triiodothyronine is a type of hormone that is produced by the Thyroid gland. The main objective of this test is to determine that the thyroid gland is hyperactive or underactive. Imbalancement of such hormone production may cause irritability, irregular heartbeats and many other physical complexions and disorders. This is why Free Triiodothyronine test is also important for everyone. You may need to fast for a certain span of time before appearing for the test. There are some types of drugs including birth control pills that may affect the test results. This is why consulting a doctor is necessary before appearing for Free Triiodothyronine test. Test results may vary depending upon age, gender and health condition of the patient.",
   },
 
   {
     id: "08",
-    productName: "THYROID STIMULATING HORMONE (TSH)",
+    productName: "PROSTATE SPECIFIC ANTIGEN (PSA)",
     imgUrl: bloodTest01,
     category: "chair",
-    price: 89,
+    price: 500,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "This is also one of the major tests. PSA is one type of protein that is produced by the prostate cells of a male body.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "This is also one of the major tests. PSA is one type of protein that is produced by the prostate cells of a male body. A PSA test is merely run to determine the chances of prostate cancer. If somebody has a family history of Prostate cancer, then he must go for this test. PSA test is a prime chapter of prostate cancer treatment. The patient need to stay away from masterbation for at least 3 days before appearing for this test. Following all the instructions given by the doctor is also necessary before appearing for the test. The test results may vary depending upon age, gender and health conditions.",
   },
 
   {
     id: "09",
-    productName: "Fasting Blood Sugar (FBS)",
+    productName: "RHEUMATOID FACTOR (RF)",
     imgUrl: bloodTest01,
     category: "chair",
-    price: 112,
+    price: 500,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "Diagnosing autoimmune disorders like rheumatoid arthritis is the prime objective of this test.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "Diagnosing autoimmune disorders like rheumatoid arthritis is the prime objective of this test. Besides, this test is also performed to diagnose the severity of any disease. Knowingly, the Rheumatoid Factor test price is very reasonable.",
   },
 
   {
     id: "10",
-    productName: "HBA1C",
+    productName: "VITAMIN B-12",
     imgUrl: bloodTest01,
     category: "mobile",
-    price: 799,
+    price: 800,
     shortDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
+      "Through this test, the level of Vitamin-B12 in blood is tested. Vitamin B12 is one of the most important elements of the human body that helps to improve blood and nerve cells.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nostrum accusantium iste, voluptas cumque provident! Consequatur officiis animi rem tempore voluptate cumque hic similique aperiam ut consectetur distinctio repudiandae quia quam quos, quas illo, iusto, necessitatibus odio veniam exercitationem quis voluptatibus debitis laboriosam! Esse debitis obcaecati blanditiis at impedit quibusdam!",
+      "Through this test, the level of Vitamin-B12 in blood is tested. Vitamin B12 is one of the most important elements of the human body that helps to improve blood and nerve cells. It also plays a vital role in the synthesis of DNA. Vitamin B-12 test is mainly performed to check that a person is having a normal level of Vitamin B-12 or not. Lack of Vitamin B-12 may cause a massive decrement of red blood cells that can cause Anemia. This is why Vitamin B-12 test is recommended for everyone. You must inform your doctor and follow all the given instructions before appearing for the test. You must fast for one complete night or 8-12 long hours before the date of test. No other precautions are required to appear for this test. If the test result shows that the level of Vitamin B-12 is lower than normal, then it may be a primary symptom of Anemia. Consulting a doctor after getting the test results is recommended. Vitamin B-12 test price is Rs.800 with Free Home Sample Collection.",
   },
   {
     id: "25",
-    productName: "THYROID STIMULATING HORMONE (TSH)",
+    productName: "RANDOM BLOOD SUGAR ( RBS)",
     imgUrl: bloodTest01,
     category: "chair",
-    price: 99,
+    price: 149,
     shortDesc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
     description:
