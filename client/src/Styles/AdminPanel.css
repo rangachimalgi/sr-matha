@@ -1,0 +1,35 @@
+
+.container {
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+}
+
+th {
+    font-weight: 600;
+}
+
+th, td {
+    vertical-align: middle;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}

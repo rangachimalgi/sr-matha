@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DataContainer } from "../App";
 import axios from "axios";
+import "../Styles/AdminPanel.css";
+
 function AdminDashboard() {
   const { CartItem } = useContext(DataContainer);
   const [users, setUsers] = useState([]);
@@ -21,8 +23,6 @@ function AdminDashboard() {
     fetchUsers();
   }, []);
 
-  
-
   // Calculate total revenue
   const totalRevenue = CartItem.reduce(
     (acc, curr) => acc + curr.price * curr.qty,
@@ -33,40 +33,47 @@ function AdminDashboard() {
     <div className="container mt-5">
       <h2 className="mb-4">Admin Panel</h2>
 
-      <div className="col-md-4">
-        <div className="card bg-info text-white mb-3">
-          <div className="card-body">
-            <h5 className="card-title">Total Users</h5>
-            <h3>{users.length}</h3>
+      <div className="row mb-4">
+        <div className="col-md-3 col-lg-5 d-flex align-items-stretch mb-3">
+          <div className="card bg-info text-white mb-3 h-100 d-flex align-items-center justify-content-center">
+            <div className="card-body">
+              <h5 className="card-title">Total Users</h5>
+              <h3>{users.length}</h3>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="row">
-        <div className="col-md-4">
-          <Link to="/admin/view-orders" className="text-decoration-none">
-            <div className="card bg-primary text-white mb-3">
-              <div className="card-body">
-                <h5 className="card-title">View Orders</h5>
+        <div className="row mb-4">
+          <div className="col-md-3 d-flex align-items-stretch">
+            <Link to="/admin/view-orders" className="text-decoration-none">
+              <div className="card bg-primary text-white mb-3 h-100 d-flex align-items-center justify-content-center">
+                <div className="card-body">
+                  <h5 className="card-title">View Orders</h5>
+                </div>
               </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col-md-4">
-          <Link to="/admin/view-users" className="text-decoration-none">
-            <div className="card bg-success text-white mb-3">
-              <div className="card-body">
-                <h5 className="card-title">View Users</h5>
+            </Link>
+          </div>
+          <div className="col-md-3 d-flex align-items-stretch">
+            <Link to="/admin/view-users" className="text-decoration-none">
+              <div className="card bg-success text-white mb-3 h-100 d-flex align-items-center justify-content-center">
+                <div className="card-body">
+                  <h5 className="card-title">View Users</h5>
+                </div>
               </div>
-            </div>
-          </Link>
-        </div>
-        <div className="col-md-4">
-          <div className="card bg-danger text-white mb-3">
-            <div className="card-body">
-              <h5 className="card-title">Total Revenue</h5>
-              <h3>${totalRevenue.toFixed(2)}</h3>{" "}
-              {/* Assuming revenue is in dollars */}
+            </Link>
+          </div>
+          <div className="col-md-3 d-flex align-items-stretch">
+            <div className="card bg-danger text-white mb-3 h-100 d-flex align-items-center justify-content-center">
+              <div className="card-body">
+                <h5 className="card-title">Total Revenue</h5>
+                <h3>
+                  ₹
+                  {totalRevenue.toLocaleString("en-IN", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </h3>
+              </div>
             </div>
           </div>
         </div>
@@ -78,7 +85,7 @@ function AdminDashboard() {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">id</th>
               <th scope="col">Email</th>
               <th scope="col">Role</th>
             </tr>

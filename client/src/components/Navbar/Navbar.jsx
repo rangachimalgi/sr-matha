@@ -134,7 +134,7 @@ const NavBar = () => {
                 to="/health-list"
                 onClick={() => setExpand(false)}
               >
-                <span className="nav-link-label">Health Packages</span>
+                <span className="nav-link-label">Packages</span>
               </Link>
             </Nav.Item>
 
@@ -157,7 +157,20 @@ const NavBar = () => {
                   to="/admin"
                   onClick={() => setExpand(false)}
                 >
-                  <span className="nav-link-label">Admin Panel</span>
+                  <span className="nav-link-label">Admin</span>
+                </Link>
+              </Nav.Item>
+            )}
+
+            {isLoggedIn && (
+              <Nav.Item>
+                <Link
+                  aria-label="Go to User Dashboard"
+                  className="navbar-link"
+                  to="/user-dashboard" // Update with your route
+                  onClick={() => setExpand(false)}
+                >
+                  <span className="nav-link-label">Dash</span>
                 </Link>
               </Nav.Item>
             )}

@@ -11,6 +11,7 @@ import AdminPanel from "./components/AdminPanel";
 import ViewOrders from "./components/ViewOrders";
 import ViewUsers from "./components/ViewUsers";
 import TotalRevenue from "./components/TotalRevenue";
+import UserDashboard from "./components/UserDashboard";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Health = lazy(() => import("./pages/HealthPackagesDetails"));
@@ -99,6 +100,7 @@ function App() {
             <Route path="/admin/view-orders" element={<ViewOrders />} />
             <Route path="/admin/view-users" element={<ViewUsers />} />
             <Route path="/admin/total-revenue" element={<TotalRevenue />} />
+            <Route path="/user-dashboard" element={<UserDashboard />} />
           </Routes>
           <Footer />
         </Router>

@@ -1,0 +1,3 @@
+.view-orders-container {
+    overflow-x: auto;  /* Enables horizontal scrolling */
+}

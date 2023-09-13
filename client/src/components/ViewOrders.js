@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadReportForm from "./UploadReportForm.js";
+import "../Styles/ViewOrders.css"
 
 function ViewOrders() {
   console.log("reached the view orders");
@@ -20,7 +21,7 @@ function ViewOrders() {
   }, []);
 
   return (
-    <div className="container mt-5">
+    <div className="view-orders-container table-responsive">
       <h2 className="mb-4">Admin Panel - View Orders</h2>
       {orders.length === 0 ? (
         <p className="alert alert-info">No orders found.</p>
@@ -51,7 +52,7 @@ function ViewOrders() {
                 <td>
                   <UploadReportForm orderId={order._id} />
                 </td>
-                <td>{order.status}</td> 
+                <td>{order.status}</td>
                 <td>
                   {order.reportLink ? (
                     <a

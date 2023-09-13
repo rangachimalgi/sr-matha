@@ -9,6 +9,7 @@ import {
   InputGroup,
   Form,
 } from "react-bootstrap";
+import { availablePincodes } from "../components/availablePincodes.js";
 import axios from "axios";
 
 const Cart = () => {
@@ -17,6 +18,10 @@ const Cart = () => {
     name: "",
     email: "",
     address: "",
+    age: "",          
+    gender: "",       
+    mobile: "",       
+    date: ""
   });
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -30,7 +35,6 @@ const Cart = () => {
   const [pincode, setPincode] = useState("");
   const [pincodeMessage, setPincodeMessage] = useState("");
 
-  const availablePincodes = ["560001", "560002"];
   const checkAvailability = () => {
     if (availablePincodes.includes(pincode)) {
       setPincodeMessage("Service is available in your pincode!");
