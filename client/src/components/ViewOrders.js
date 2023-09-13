@@ -33,6 +33,7 @@ function ViewOrders() {
               <th>Name</th>
               <th>Email</th>
               <th>Address</th>
+              <th>PhoneNo</th>
               <th>Products</th>
               <th>Upload Report</th>
               <th>Status</th>
@@ -46,6 +47,7 @@ function ViewOrders() {
                 <td>{order.name}</td>
                 <td>{order.email}</td>
                 <td>{order.address}</td>
+                <td>{order.phoneno}</td>
                 <td>
                   {order.cartItems.map((item) => item.productName).join(", ")}
                 </td>

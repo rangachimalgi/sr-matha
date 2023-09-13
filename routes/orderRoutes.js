@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
       message: "Order processed successfully",
       order: savedOrder,
     });
+    console.log("orders 22", order);
   } catch (error) {
     res
       .status(500)
@@ -33,6 +34,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const orders = await Order.find(); // Fetch all orders from the database
+    console.log("orders", orders);
     res.json(orders);
   } catch (error) {
     res

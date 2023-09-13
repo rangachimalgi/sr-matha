@@ -138,17 +138,6 @@ const NavBar = () => {
               </Link>
             </Nav.Item>
 
-            <Nav.Item>
-              <Link
-                aria-label="Go to Cart Page"
-                className="navbar-link"
-                to="/cart"
-                onClick={() => setExpand(false)}
-              >
-                <span className="nav-link-label">Cart</span>
-              </Link>
-            </Nav.Item>
-
             {userRole === "admin" && (
               <Nav.Item>
                 <Link
@@ -158,19 +147,6 @@ const NavBar = () => {
                   onClick={() => setExpand(false)}
                 >
                   <span className="nav-link-label">Admin</span>
-                </Link>
-              </Nav.Item>
-            )}
-
-            {isLoggedIn && (
-              <Nav.Item>
-                <Link
-                  aria-label="Go to User Dashboard"
-                  className="navbar-link"
-                  to="/user-dashboard" // Update with your route
-                  onClick={() => setExpand(false)}
-                >
-                  <span className="nav-link-label">Dash</span>
                 </Link>
               </Nav.Item>
             )}

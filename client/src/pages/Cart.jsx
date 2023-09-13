@@ -18,9 +18,9 @@ const Cart = () => {
     name: "",
     email: "",
     address: "",
+    phoneno: "",       
     age: "",          
     gender: "",       
-    mobile: "",       
     date: ""
   });
   const handleClose = () => setShowModal(false);
@@ -65,6 +65,7 @@ const Cart = () => {
       name: formData.get("name"),
       email: formData.get("email"),
       address: formData.get("address"),
+      phoneno: formData.get("phoneno"),
       cartItems: CartItem,
     };
 
@@ -230,6 +231,22 @@ const Cart = () => {
                   }))
                 }
                 name="address"
+              />{" "}
+              {/* added name attribute */}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Phone No</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your phone no"
+                value={orderData.phoneno}
+                onChange={(e) =>
+                  setOrderData((prevState) => ({
+                    ...prevState,
+                    phoneno: e.target.value,
+                  }))
+                }
+                name="phoneno"
               />{" "}
               {/* added name attribute */}
             </Form.Group>
