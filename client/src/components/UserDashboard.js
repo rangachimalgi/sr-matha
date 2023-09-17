@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../Styles/UserDashBoard.css"
+import "../Styles/UserDashBoard.css";
 
 const UserDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -45,7 +45,7 @@ const UserDashboard = () => {
                 <th>Date</th>
                 <th>Total Amount</th>
                 <th>Status</th>
-                <th>Report Link</th>
+                <th>Report</th>
                 {/* Add other relevant columns */}
               </tr>
             </thead>
@@ -57,18 +57,19 @@ const UserDashboard = () => {
                   <td>{order.totalAmount}</td>
                   <td>{order.status}</td>
                   <td>
-                  {order.reportLink ? (
-                    <a
-                      href={`http://localhost:8080${order.reportLink}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Report
-                    </a>
-                  ) : (
-                    "Not uploaded"
-                  )}
-                </td>
+                    {order.reports && order.reports.length > 0
+                      ? order.reports.map((report) => (
+                          <a
+                            key={report}
+                            href={`http://localhost:8080${report}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View Report
+                          </a>
+                        ))
+                      : "Not uploaded"}
+                  </td>
                   {/* Add other relevant columns */}
                 </tr>
               ))}

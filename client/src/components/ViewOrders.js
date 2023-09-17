@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadReportForm from "./UploadReportForm.js";
-import "../Styles/ViewOrders.css"
+import "../Styles/ViewOrders.css";
 
 function ViewOrders() {
   console.log("reached the view orders");
@@ -38,6 +38,7 @@ function ViewOrders() {
               <th>Upload Report</th>
               <th>Status</th>
               <th>Report</th>
+              <th>Download Reports</th>
             </tr>
           </thead>
           <tbody>
@@ -56,16 +57,30 @@ function ViewOrders() {
                 </td>
                 <td>{order.status}</td>
                 <td>
-                  {order.reportLink ? (
+                  {order.reports && order.reports.length > 0
+                    ? order.reports.map((report) => (
+                        <a
+                          key={report}
+                          href={`http://localhost:8080${report}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View Report
+                        </a>
+                      ))
+                    : "Not uploaded"}
+                </td>
+                <td>
+                  {order.reports && order.reports.length > 0 ? (
                     <a
-                      href={`http://localhost:8080${order.reportLink}`}
+                      href={`http://localhost:8080/api/orders/${order._id}/download-reports`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View Report
+                      Download All Reports
                     </a>
                   ) : (
-                    "Not uploaded"
+                    "No Reports"
                   )}
                 </td>
               </tr>

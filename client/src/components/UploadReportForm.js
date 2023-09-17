@@ -3,17 +3,20 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function UploadReportForm({ orderId }) {
-
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("report", file);
+    files.forEach((file, index) => {
+      formData.append("report", file);
+    });
 
     try {
       await axios.post(
@@ -34,7 +37,13 @@ function UploadReportForm({ orderId }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="file" name="report" onChange={handleFileChange} required />
+      <input
+        type="file"
+        multiple
+        name="report"
+        onChange={handleFileChange}
+        required
+      />
       <button type="submit">Upload Report</button>
     </form>
   );

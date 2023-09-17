@@ -31,14 +31,7 @@ const orderSchema = new mongoose.Schema({
         description: String,
         qty: Number
     }],
-    reportLink: {
-        type: String,
-        default: ''  
-    },
-    reportLink: {
-        type: String,
-        default: null
-    },
+    reports: [String],
       status: {
         type: String,
         default: "Pending"  

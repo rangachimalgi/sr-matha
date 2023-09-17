@@ -1,7 +1,7 @@
 import express from "express";
 import Order from "../models/Orders.js";
 import multer from "multer";
-import { uploadReport } from "../controllers/OrderController.js";
+import { uploadReport, downloadReports } from "../controllers/OrderController.js";
 
 const router = express.Router();
 
@@ -43,6 +43,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post('/:orderId/upload-report', upload.single('report'), uploadReport);
+router.post('/:orderId/upload-report', upload.array('report'), uploadReport);
+router.get("/:orderId/download-reports", downloadReports);
 
 export default router;
