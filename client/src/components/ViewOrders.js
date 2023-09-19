@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadReportForm from "./UploadReportForm.js";
+import "font-awesome/css/font-awesome.min.css";
 import "../Styles/ViewOrders.css";
 
 function ViewOrders() {
@@ -77,6 +78,7 @@ function ViewOrders() {
                   {order.reports && order.reports.length > 0
                     ? order.reports.map((report) => (
                         <a
+                          className="styled-link"
                           key={report}
                           href={`http://localhost:8080${report}`}
                           target="_blank"
@@ -90,6 +92,7 @@ function ViewOrders() {
                 <td>
                   {order.reports && order.reports.length > 0 ? (
                     <a
+                      className="styled-link"
                       href={`http://localhost:8080/api/orders/${order._id}/download-reports`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -102,10 +105,11 @@ function ViewOrders() {
                 </td>
                 <td>
                   <button
+                    className="custom-button"
                     onClick={() => sendReportsByEmail(order._id, order.email)}
                     disabled={!(order.reports && order.reports.length > 0)}
                   >
-                    Send Report
+                    <i className="fa fa-envelope"></i> 
                   </button>
                 </td>
               </tr>
