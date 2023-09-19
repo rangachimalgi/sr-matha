@@ -7,6 +7,22 @@ function ViewOrders() {
   console.log("reached the view orders");
   const [orders, setOrders] = useState([]);
 
+  const sendReportsByEmail = async (orderId, Email) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/api/orders/${orderId}/send-reports-by-email`
+      );
+      if (response.status === 200) {
+        alert(`Reports sent to ${Email} successfully!`);
+      } else {
+        alert("Failed to send reports. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error sending reports:", error);
+      alert("Error occurred while sending reports.");
+    }
+  };
+
   useEffect(() => {
     async function fetchOrders() {
       try {
@@ -39,6 +55,7 @@ function ViewOrders() {
               <th>Status</th>
               <th>Report</th>
               <th>Download Reports</th>
+              <th>Send Reports to user</th>
             </tr>
           </thead>
           <tbody>
@@ -82,6 +99,14 @@ function ViewOrders() {
                   ) : (
                     "No Reports"
                   )}
+                </td>
+                <td>
+                  <button
+                    onClick={() => sendReportsByEmail(order._id, order.email)}
+                    disabled={!(order.reports && order.reports.length > 0)}
+                  >
+                    Send Report
+                  </button>
                 </td>
               </tr>
             ))}
