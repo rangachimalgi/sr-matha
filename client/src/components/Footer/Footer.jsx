@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Col, Container, Row } from "react-bootstrap";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa"; // Importing social media icons
 
 const Footer = () => {
   return (
@@ -45,6 +46,24 @@ const Footer = () => {
               <li>Email: Demo@gmail.com</li>
               <li>Phone: +91 9611011266</li>
             </ul>
+          </Col>
+          <Col md={3} sm={5} className="box">
+            
+            {/* Social Media Links */}
+            <div className="social-links">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <FaFacebookF />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                <FaTwitter />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                <FaInstagram />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                <FaLinkedinIn />
+              </a>
+            </div>
           </Col>
         </Row>
       </Container>

@@ -48,3 +48,17 @@ footer li {
   margin-bottom: 10px;
   opacity: 0.5;
 }
+
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px; /* Spacing between icons */
+}
+.social-links a {
+  color: #333; /* Color of the icons */
+  font-size: 24px; /* Size of the icons */
+  transition: color 0.3s;
+}
+.social-links a:hover {
+  color: #007BFF; /* Color on hover */
+}
