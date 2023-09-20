@@ -85,8 +85,15 @@ const HealthPackageDetails = () => {
                           : null
                       )
                     }
-                    style={{ cursor: "pointer" }}
+                    style={{
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
                   >
+                    <span style={{ marginLeft: "10px" }}>
+                      {openCategoryId === category.categoryName ? "v" : ">"}
+                    </span>
                     {category.categoryName}
                   </h4>
 
