@@ -11,6 +11,7 @@ export const healthPackagesArray = [
     {
       id: "01",
       productName: "BASIC HEALTH PACKAGE (66 Tests)",
+      type: "package",
       includedTests: [
         {
           categoryName: "Thyroid Profile",
@@ -41,6 +42,7 @@ export const healthPackagesArray = [
     {
         id: "02",
         productName: "WOMEN HEALTH PACKAGE (71 Tests)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
@@ -71,6 +73,7 @@ export const healthPackagesArray = [
       {
         id: "03",
         productName: "MALE HEALTH PACKAGE (70 Tests)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
@@ -101,6 +104,7 @@ export const healthPackagesArray = [
       {
         id: "04",
         productName: "GENERAL HEALTH PACKAGE (111)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
@@ -131,6 +135,7 @@ export const healthPackagesArray = [
       {
         id: "05",
         productName: "FEMALE ADVANCED HEALTH PACKAGE (108 Tests)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
@@ -161,6 +166,7 @@ export const healthPackagesArray = [
       {
         id: "06",
         productName: "MALE ADVANCED HEALTH PACKAGE (105 Tests)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
@@ -191,6 +197,7 @@ export const healthPackagesArray = [
       {
         id: "07",
         productName: "FEMALE SENIOR CITIZEN HEALTH PACKAGE (108 Tests)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
@@ -221,6 +228,7 @@ export const healthPackagesArray = [
       {
         id: "08",
         productName: "MALE SENIOR CITIZEN HEALTH PACKAGE (108 Tests)",
+        type: "package",
         includedTests: [
           {
             categoryName: "Thyroid Profile",
