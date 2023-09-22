@@ -9,12 +9,16 @@ import { DataContainer } from "../App";
 import { useParams } from "react-router-dom";
 
 const Shop = () => {
-  const { addToCart } = useContext(DataContainer);
+  const { addToCart, globalFilterList } = useContext(DataContainer);
   const { id } = useParams();
-  const [filterList, setFilterList] = useState(products);
+  const [filterList, setFilterList] = useState(globalFilterList);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    setFilterList(globalFilterList);  // Whenever global filter list changes, update local list
+}, [globalFilterList]);
 
   return (
     <Fragment>

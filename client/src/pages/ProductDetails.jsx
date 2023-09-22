@@ -46,6 +46,12 @@ const ProductDetails = () => {
       )
     );
   }, [selectedProduct]);
+
+  useEffect(() => {
+    return () => {
+        setSelectedProduct(null);
+    };
+}, []);
   return (
     <Fragment>
       <Banner title={selectedProduct?.productName} />

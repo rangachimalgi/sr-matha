@@ -12,6 +12,7 @@ import ViewOrders from "./components/ViewOrders";
 import ViewUsers from "./components/ViewUsers";
 import TotalRevenue from "./components/TotalRevenue";
 import UserDashboard from "./components/UserDashboard";
+import { products } from "./utils/products";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Health = lazy(() => import("./pages/HealthPackagesDetails"));
@@ -23,6 +24,7 @@ export const DataContainer = createContext();
 function App() {
   const [CartItem, setCartItem] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [filterList, setFilterList] = useState([]);
 
   const addToCart = (product, num = 1) => {
     const productExit = CartItem.find((item) => item.id === product.id);
@@ -57,6 +59,8 @@ function App() {
     }
   };
 
+  const [globalFilterList, setGlobalFilterList] = useState(products); // This will be your global list
+
   const deleteProduct = (product) => {
     setCartItem(CartItem.filter((item) => item.id !== product.id));
   };
@@ -73,6 +77,8 @@ function App() {
         deleteProduct,
         selectedProduct,
         setSelectedProduct,
+        globalFilterList,
+        setGlobalFilterList,
       }}
     >
       <Suspense fallback={<Loader />}>
@@ -91,7 +97,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/shop/:id" element={<ProductDetails />} />
+            <Route path="/shop/:id" element={<ProductDetails key={window.location.pathname} />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/health-list" element={<HealthList />} />
             <Route path="/health/:id" element={<Health />} />

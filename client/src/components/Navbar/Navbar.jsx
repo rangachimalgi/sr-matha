@@ -4,6 +4,7 @@ import "./navbar.css";
 import { DataContainer } from "../../App";
 import { Link } from "react-router-dom";
 import LoginModal from "../LoginModal";
+import ProductSearchBar from "../SeachBar/SearchBarGlobal";
 const NavBar = () => {
   const { CartItem, setCartItem } = useContext(DataContainer);
   const [expand, setExpand] = useState(false);
@@ -13,6 +14,7 @@ const NavBar = () => {
   const [userRole, setUserRole] = useState(
     localStorage.getItem("role") || null
   );
+  const { setGlobalFilterList } = useContext(DataContainer);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -103,6 +105,7 @@ const NavBar = () => {
             <span></span>
           </Navbar.Toggle>
         </div>
+        <ProductSearchBar setFilterList={setGlobalFilterList} />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end flex-grow-1 pe-3">
             <Nav.Item>
@@ -123,7 +126,7 @@ const NavBar = () => {
                 to="/shop"
                 onClick={() => setExpand(false)}
               >
-                <span className="nav-link-label">Book Your Test</span>
+                <span className="nav-link-label">Tests</span>
               </Link>
             </Nav.Item>
 
