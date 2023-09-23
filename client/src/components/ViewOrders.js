@@ -7,6 +7,11 @@ import "../Styles/ViewOrders.css";
 function ViewOrders() {
   console.log("reached the view orders");
   const [orders, setOrders] = useState([]);
+  const [hiddenReports, setHiddenReports] = useState([]);
+
+  const hideReport = (orderId, reportLink) => {
+    setHiddenReports((prevState) => [...prevState, { orderId, reportLink }]);
+  };
 
   const sendReportsByEmail = async (orderId, Email) => {
     try {
@@ -78,19 +83,39 @@ function ViewOrders() {
                 <td>{order.status}</td>
                 <td>
                   {order.reports && order.reports.length > 0
-                    ? order.reports.map((report) => (
-                        <a
-                          className="styled-link"
-                          key={report}
-                          href={`http://localhost:8080${report}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Report
-                        </a>
-                      ))
+                    ? order.reports.map(
+                        (report) =>
+                          !hiddenReports.some(
+                            (hidden) =>
+                              hidden.orderId === order._id &&
+                              hidden.reportLink === report
+                          ) && (
+                            <div key={report} style={{ position: "relative" }}>
+                              <a
+                                className="styled-link"
+                                href={`http://localhost:8080${report}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                View Report
+                              </a>
+                              {/* Close button for each report */}
+                              <button
+                                style={{
+                                  position: "absolute",
+                                  right: 0,
+                                  top: 0,
+                                }}
+                                onClick={() => hideReport(order._id, report)}
+                              >
+                                x
+                              </button>
+                            </div>
+                          )
+                      )
                     : "Not uploaded"}
                 </td>
+
                 <td>
                   {order.reports && order.reports.length > 0 ? (
                     <a
@@ -111,7 +136,7 @@ function ViewOrders() {
                     onClick={() => sendReportsByEmail(order._id, order.email)}
                     disabled={!(order.reports && order.reports.length > 0)}
                   >
-                    <i className="fa fa-envelope"></i> 
+                    <i className="fa fa-envelope"></i>
                   </button>
                 </td>
               </tr>
