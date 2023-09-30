@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { DataContainer } from "../../App";
 import { toast } from "react-toastify";
 
-const Product = ({ title, productItem, addToCart }) => {
+const Product = ({ title, productItem, addToCart,showImage =true }) => {
   const { setSelectedProduct } = useContext(DataContainer);
   const router = useNavigate();
   const [count, setCount] = useState(0);
@@ -29,12 +29,14 @@ const Product = ({ title, productItem, addToCart }) => {
       {title === "Big Discount" ? (
         <span className="discount">{productItem.discount}% Off</span>
       ) : null}
-      <img
-        loading="lazy"
-        onClick={() => handelClick()}
-        src={productItem.imgUrl}
-        alt=""
-      />
+      {showImage && (
+        <img
+          loading="lazy"
+          onClick={() => handelClick()}
+          src={productItem.imgUrl}
+          alt=""
+        />
+      )}
       <div className="product-like">
         <label>{count}</label> <br />
         <ion-icon name="heart-outline" onClick={increment}></ion-icon>

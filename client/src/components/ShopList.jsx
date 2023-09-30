@@ -25,6 +25,7 @@ const ShopList = ({ productItems, addToCart }) => {
                 title={null}
                 productItem={productItem}
                 addToCart={addToCart}
+                showImage={false}
               />
             );
           })}
