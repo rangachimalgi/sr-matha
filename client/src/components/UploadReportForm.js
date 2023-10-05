@@ -20,7 +20,7 @@ function UploadReportForm({ orderId }) {
 
     try {
       await axios.post(
-        `/api/orders/${orderId}/upload-report`,
+        `${process.env.REACT_APP_API_URL}/api/orders/${orderId}/upload-report`,
         formData,
         {
           headers: {

@@ -18,7 +18,7 @@ function ViewOrders() {
   const sendReportsByEmail = async (orderId, Email) => {
     try {
       const response = await axios.post(
-        `/api/orders/${orderId}/send-reports-by-email`
+        `${process.env.REACT_APP_API_URL}/api/orders/${orderId}/send-reports-by-email`
       );
       if (response.status === 200) {
         alert(`Reports sent to ${Email} successfully!`);
@@ -34,7 +34,7 @@ function ViewOrders() {
   useEffect(() => {
     async function fetchOrders() {
       try {
-        const response = await axios.get("/api/orders");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders`);
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);

@@ -72,7 +72,7 @@ const Cart = () => {
 
     try {
       const response = await axios.post(
-        "/api/orders",
+        `${process.env.REACT_APP_API_URL}/api/orders`,
         orderDetails
       );
       if (response.data.success) {

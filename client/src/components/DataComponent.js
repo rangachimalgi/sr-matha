@@ -4,7 +4,7 @@ function DataComponent() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${process.env.REACT_APP_API_URL}/api/data`)
       .then(response => response.json())
       .then(fetchedData => setData(fetchedData));
   }, []);
