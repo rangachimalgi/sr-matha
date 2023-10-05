@@ -6,6 +6,8 @@ import "../Styles/ViewOrders.css";
 
 function ViewOrders() {
   console.log("reached the view orders");
+  console.log('All Env:', process.env);
+  console.log("API URL:", process.env.REACT_APP_API_URL);
   const [orders, setOrders] = useState([]);
   const [hiddenReports, setHiddenReports] = useState([]);
 
@@ -16,7 +18,7 @@ function ViewOrders() {
   const sendReportsByEmail = async (orderId, Email) => {
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/orders/${orderId}/send-reports-by-email`
+        `/api/orders/${orderId}/send-reports-by-email`
       );
       if (response.status === 200) {
         alert(`Reports sent to ${Email} successfully!`);
@@ -32,7 +34,7 @@ function ViewOrders() {
   useEffect(() => {
     async function fetchOrders() {
       try {
-        const response = await axios.get("http://localhost:8080/api/orders");
+        const response = await axios.get("/api/orders");
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -93,7 +95,7 @@ function ViewOrders() {
                             <div key={report} style={{ position: "relative" }}>
                               <a
                                 className="styled-link"
-                                href={`http://localhost:8080${report}`}
+                                href={`${process.env.REACT_APP_API_URL}${report}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
@@ -120,7 +122,7 @@ function ViewOrders() {
                   {order.reports && order.reports.length > 0 ? (
                     <a
                       className="styled-link"
-                      href={`http://localhost:8080/api/orders/${order._id}/download-reports`}
+                      href={`${process.env.REACT_APP_API_URL}/api/orders/${order._id}/download-reports`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

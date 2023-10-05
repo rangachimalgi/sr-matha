@@ -15,7 +15,7 @@ function LoginModal(props) {
     };
 
     try {
-        const response = await axios.post('http://localhost:8080/api/auth/login', userData);
+        const response = await axios.post('/api/auth/login', userData);
         if (response.data && response.data.token) {
             localStorage.setItem('token', response.data.token);
 

@@ -8,7 +8,7 @@ const ViewUsers = () => {
     async function fetchUsers() {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/auth/users"
+          "/api/auth/users"
         );
         setUsers(response.data);
       } catch (error) {

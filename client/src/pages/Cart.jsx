@@ -72,7 +72,7 @@ const Cart = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/orders",
+        "/api/orders",
         orderDetails
       );
       if (response.data.success) {

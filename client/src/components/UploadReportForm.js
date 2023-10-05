@@ -20,7 +20,7 @@ function UploadReportForm({ orderId }) {
 
     try {
       await axios.post(
-        `http://localhost:8080/api/orders/${orderId}/upload-report`,
+        `/api/orders/${orderId}/upload-report`,
         formData,
         {
           headers: {

@@ -12,7 +12,7 @@ function AdminDashboard() {
     async function fetchUsers() {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/auth/users"
+          "/api/auth/users"
         ); // adjust the URL to your backend endpoint
         setUsers(response.data);
       } catch (error) {

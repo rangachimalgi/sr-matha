@@ -8,7 +8,7 @@ const UserDashboard = () => {
   useEffect(() => {
     async function fetchOrders() {
       // Replace with your actual API endpoint
-      const response = await fetch("http://localhost:8080/api/orders", {
+      const response = await fetch("/api/orders", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -61,7 +61,7 @@ const UserDashboard = () => {
                       ? order.reports.map((report) => (
                           <a
                             key={report}
-                            href={`http://localhost:8080${report}`}
+                            href={`${report}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
