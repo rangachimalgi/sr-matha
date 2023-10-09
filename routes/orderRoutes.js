@@ -1,7 +1,6 @@
 import express from "express";
 import Order from "../models/Orders.js";
 import multer from "multer";
-console.log('__dirname:', __dirname);
 import { uploadReport, downloadReports, sendReportsByEmail } from "../controllers/OrderController.js";
 
 const router = express.Router();
