@@ -33,7 +33,10 @@ app.use("/api/auth", (req, res, next) => {
   console.log(`API Request Received: ${new Date().toISOString()} - Method: ${req.method} - Path: ${req.originalUrl}`);
   next();
 }, authRoutes);
-app.use("api/orders", orderRoutes);
+app.use("api/orders", (req, res, next) => {
+  console.log(`API Request Received: ${new Date().toISOString()} - Method: ${req.method} - Path: ${req.originalUrl}`);
+  next();
+}, orderRoutes);
 app.use('uploads', express.static(path.join(__dirname, 'uploads')));
 
 //static files
