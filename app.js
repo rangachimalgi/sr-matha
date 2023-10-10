@@ -29,7 +29,10 @@ app.use(express.json());
 //use specific routes
 
 // Define your routes
-app.use("api/auth", authRoutes);
+app.use("/api/auth", (req, res, next) => {
+  console.log(`API Request Received: ${new Date().toISOString()} - Method: ${req.method} - Path: ${req.originalUrl}`);
+  next();
+}, authRoutes);
 app.use("api/orders", orderRoutes);
 app.use('uploads', express.static(path.join(__dirname, 'uploads')));
 
