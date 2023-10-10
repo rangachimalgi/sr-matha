@@ -35,6 +35,7 @@ function ViewOrders() {
     async function fetchOrders() {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders`);
+        console.log('Fetched orders:', response.data);
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
