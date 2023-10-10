@@ -33,15 +33,16 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
+    console.log("API Route Hit: GET /api/orders"); // Log 1
     const orders = await Order.find(); // Fetch all orders from the database
-    console.log("orders", orders);
-    res.json(orders);
+    console.log("Orders Fetched:", orders); // Log 2
+    res.status(200).json(orders);
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error fetching orders", error: error.message });
+    console.error("Error Fetching Orders:", error.message); // Log 3
+    res.status(500).json({ message: "Error fetching orders", error: error.message });
   }
 });
+
 
 router.post('/:orderId/upload-report', upload.array('report'), uploadReport);
 router.get("/:orderId/download-reports", downloadReports);
