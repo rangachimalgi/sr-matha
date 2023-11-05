@@ -11,20 +11,20 @@ const Footer = () => {
           <Col md={3} sm={5} className="box">
             <div className="logo">
               <ion-icon name="medkit-outline"></ion-icon>{" "}
-              <h1>BookTestNearMe</h1>
+              <h1>Fortune Blood Test</h1>
             </div>
-            <p>
+            {/* <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
               libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat
               et lectus vel ut sollicitudin elit at amet.
-            </p>
+            </p> */}
           </Col>
           <Col md={3} sm={5} className="box">
             <h2>About Us</h2>
             <ul>
-              <li>Careers</li>
+              {/* <li>Careers</li>
               <li>Our Centres</li>
-              <li>Our Cares</li>
+              <li>Our Cares</li> */}
               <li>Terms & Conditions</li>
               <li>Privacy Policy</li>
             </ul>
@@ -33,10 +33,10 @@ const Footer = () => {
             <h2>Customer Care</h2>
             <ul>
               <li>Help Center </li>
-              <li>How to Buy </li>
+              {/* <li>How to Buy </li>
               <li>Track Your Order </li>
               <li>Corporate & Bulk Purchasing </li>
-              <li>Returns & Refunds </li>
+              <li>Returns & Refunds </li> */}
             </ul>
           </Col>
           <Col md={3} sm={5} className="box">

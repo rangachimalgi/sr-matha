@@ -61,7 +61,7 @@ const NavBar = () => {
       <Container className="navbar-container">
         <Navbar.Brand to="/">
           <ion-icon name="medkit-outline"></ion-icon>{" "}
-          <h1 className="logo">BookTestNearMe</h1>
+          <h1 className="logo">Fortune Blood Test</h1>
         </Navbar.Brand>
         {/* Media cart and toggle */}
         <div className="d-flex">
