@@ -7,6 +7,7 @@ import connectDB from "./config/db.js";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import "./keepAlive.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,8 +23,6 @@ connectDB();
 
 const app = express();
 
-// Require the keepAlive script here
-require('./keepAlive');
 
 // Middlewares
 app.use(cors());
