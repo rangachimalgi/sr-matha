@@ -22,6 +22,9 @@ connectDB();
 
 const app = express();
 
+// Require the keepAlive script here
+require('./keepAlive');
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
