@@ -4,7 +4,7 @@ import Product from "./Product/Product";
 
 const ShopList = ({ productItems, addToCart }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9; // Change as needed
+  const itemsPerPage = 50; // Change as needed
   const totalPages = Math.ceil(productItems.length / itemsPerPage);
   const displayedProducts = productItems.slice(
     (currentPage - 1) * itemsPerPage,
