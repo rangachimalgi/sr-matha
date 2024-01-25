@@ -25,6 +25,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    gotra: {
+        type: String,
+        required: true,
+    },
     cartItems: [{
         id: String,
         productName: String,

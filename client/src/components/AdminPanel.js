@@ -37,7 +37,7 @@ function AdminDashboard() {
         <div className="col-md-3 col-lg-5 d-flex align-items-stretch mb-3">
           <div className="card bg-info text-white mb-3 h-100 d-flex align-items-center justify-content-center">
             <div className="card-body">
-              <h5 className="card-title">Total Users</h5>
+              <h5 className="card-title">Total Devotees</h5>
               <h3>{users.length}</h3>
             </div>
           </div>
@@ -48,7 +48,7 @@ function AdminDashboard() {
             <Link to="/admin/view-orders" className="text-decoration-none">
               <div className="card bg-primary text-white mb-3 h-100 d-flex align-items-center justify-content-center">
                 <div className="card-body">
-                  <h5 className="card-title">View Orders</h5>
+                  <h5 className="card-title">View Seva Details</h5>
                 </div>
               </div>
             </Link>
@@ -57,31 +57,17 @@ function AdminDashboard() {
             <Link to="/admin/view-users" className="text-decoration-none">
               <div className="card bg-success text-white mb-3 h-100 d-flex align-items-center justify-content-center">
                 <div className="card-body">
-                  <h5 className="card-title">View Users</h5>
+                  <h5 className="card-title">View Devotees</h5>
                 </div>
               </div>
             </Link>
-          </div>
-          <div className="col-md-3 d-flex align-items-stretch">
-            <div className="card bg-danger text-white mb-3 h-100 d-flex align-items-center justify-content-center">
-              <div className="card-body">
-                <h5 className="card-title">Total Revenue</h5>
-                <h3>
-                  ₹
-                  {totalRevenue.toLocaleString("en-IN", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </h3>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
       {/* User Table */}
       <div className="mt-5">
-        <h3>Users List</h3>
+        <h3>Devotees List</h3>
         <table className="table">
           <thead>
             <tr>

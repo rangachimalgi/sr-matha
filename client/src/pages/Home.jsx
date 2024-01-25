@@ -16,8 +16,8 @@ const Home = () => {
     <Fragment>
       <SliderHome/>
       <Wrapper />
-      <Section title="Popular Packages" bgColor="#f6f9fc" productItems={discoutProducts} addToCart={addToCart}/>
-      <Section title="Popular Tests" bgColor="#f6f9fc" productItems={popularTests} addToCart={addToCart} />
+      <Section title="Well-Liked Sevas Packages" bgColor="#f6f9fc" productItems={discoutProducts} addToCart={addToCart}/>
+      <Section title="Well-Liked Sevas" bgColor="#f6f9fc" productItems={popularTests} addToCart={addToCart} />
     </Fragment>
   )
 }

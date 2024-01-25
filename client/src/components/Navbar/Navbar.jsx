@@ -61,7 +61,7 @@ const NavBar = () => {
       <Container className="navbar-container">
         <Navbar.Brand to="/">
           <ion-icon name="medkit-outline"></ion-icon>{" "}
-          <h1 className="logo">Fortune Blood Test</h1>
+          <h1 className="logo">SRS Matha</h1>
         </Navbar.Brand>
         {/* Media cart and toggle */}
         <div className="d-flex">
@@ -126,7 +126,7 @@ const NavBar = () => {
                 to="/shop"
                 onClick={() => setExpand(false)}
               >
-                <span className="nav-link-label">Tests</span>
+                <span className="nav-link-label">Seva</span>
               </Link>
             </Nav.Item>
 
@@ -137,7 +137,7 @@ const NavBar = () => {
                 to="/health-list"
                 onClick={() => setExpand(false)}
               >
-                <span className="nav-link-label">Packages</span>
+                <span className="nav-link-label">Seva Packages</span>
               </Link>
             </Nav.Item>
 

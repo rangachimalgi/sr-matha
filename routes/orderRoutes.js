@@ -19,7 +19,6 @@ router.post("/", async (req, res) => {
       message: "Order processed successfully",
       order: savedOrder,
     });
-    console.log("orders 22", order);
   } catch (error) {
     res
       .status(500)
@@ -43,6 +42,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.put('/api/orders/:orderId', async (req, res) => {
+  const orderId = req.params.orderId;
+  const { selectedDates } = req.body;
+
+  try {
+    // Update the order with the selected dates
+    await Order.findByIdAndUpdate(orderId, { selectedDates });
+
+    res.status(200).json({ message: 'Order updated successfully' });
+  } catch (error) {
+    console.error('Error updating selected dates:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 router.post('/:orderId/upload-report', upload.array('report'), uploadReport);
 router.get("/:orderId/download-reports", downloadReports);

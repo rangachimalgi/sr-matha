@@ -74,7 +74,7 @@ const HealthPackageDetails = () => {
         selectedProduct.includedTests.length > 0 && (
           <section className="included-tests">
             <Container>
-              <h3>Included Tests</h3>
+              <h3>Included Seva</h3>
               {selectedProduct.includedTests.map((category) => (
                 <div key={category.categoryName}>
                   <h4

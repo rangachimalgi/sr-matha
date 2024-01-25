@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadReportForm from "./UploadReportForm.js";
+import { isValid, format, parseISO } from 'date-fns';
+import DatePicker from "react-datepicker";
 import "font-awesome/css/font-awesome.min.css";
 import "../Styles/ViewOrders.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 function ViewOrders() {
-  console.log("reached the view orders");
-  console.log('All Env:', process.env);
-  console.log("API URL:", process.env.REACT_APP_API_URL);
   const [orders, setOrders] = useState([]);
   const [hiddenReports, setHiddenReports] = useState([]);
+  const [selectedDates, setSelectedDates] = useState({});
+
+  const handleDateChange = (orderId, date) => {
+    setSelectedDates((prevDates) => ({
+      ...prevDates,
+      [orderId]: date,
+    }));
+  };
 
   const hideReport = (orderId, reportLink) => {
     setHiddenReports((prevState) => [...prevState, { orderId, reportLink }]);
@@ -31,6 +39,30 @@ function ViewOrders() {
     }
   };
 
+  const scheduleMessage = async (orderId, phoneNumber) => {
+    try {
+      // Delay the execution of the message sending logic by 5 minutes (300,000 milliseconds)
+      const delayInMilliseconds = 10 * 1000; // 10 seconds
+
+  
+      await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
+  
+      // Now, make an API request to trigger the send-instant-message action
+      const response = await axios.post('http://localhost:8082/api/send-instant-message', {
+        phoneNumber,
+        message: 'Your instant message content here',
+      });
+  
+      if (response.status === 200) {
+        console.log('Instant message sent successfully!');
+      } else {
+        console.error('Failed to send instant message.');
+      }
+    } catch (error) {
+      console.error('Error sending instant message:', error);
+    }
+  };  
+  
   useEffect(() => {
     async function fetchOrders() {
       try {
@@ -47,25 +79,26 @@ function ViewOrders() {
 
   return (
     <div className="view-orders-container table-responsive">
-      <h2 className="mb-4">Admin Panel - View Orders</h2>
+      <h2 className="mb-4">Admin Panel - View Seva Details</h2>
       {orders.length === 0 ? (
         <p className="alert alert-info">No orders found.</p>
       ) : (
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Order ID</th>
-              <th>Name</th>
+              <th>Seva ID</th>
+              <th>Devotee Name</th>
               <th>Email</th>
-              <th>Address</th>
+              <th>Date</th>
               <th>PhoneNo</th>
-              <th>Age</th>
-              <th>Products</th>
-              <th>Upload Report</th>
+              <th>Gotra</th>
+              <th>Seva</th>
+              <th>Upload Seva Report</th>
               <th>Status</th>
-              <th>Report</th>
+              <th>Seva Report</th>
               <th>Download Reports</th>
               <th>Send Reports to user</th>
+              <th>Schedule Action</th>
             </tr>
           </thead>
           <tbody>
@@ -102,7 +135,6 @@ function ViewOrders() {
                               >
                                 View Report
                               </a>
-                              {/* Close button for each report */}
                               <button
                                 style={{
                                   position: "absolute",
@@ -118,7 +150,6 @@ function ViewOrders() {
                       )
                     : "Not uploaded"}
                 </td>
-
                 <td>
                   {order.reports && order.reports.length > 0 ? (
                     <a
@@ -140,6 +171,14 @@ function ViewOrders() {
                     disabled={!(order.reports && order.reports.length > 0)}
                   >
                     <i className="fa fa-envelope"></i>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="custom-button"
+                    onClick={() => scheduleMessage(order._id, order.phoneno)}
+                  >
+                    Schedule Action
                   </button>
                 </td>
               </tr>

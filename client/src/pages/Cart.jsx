@@ -10,6 +10,9 @@ import {
   Form,
 } from "react-bootstrap";
 import { availablePincodes } from "../components/availablePincodes.js";
+import DatePicker from "react-datepicker";
+import { format } from 'date-fns';
+import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
 const Cart = () => {
@@ -20,6 +23,7 @@ const Cart = () => {
     address: "",
     phoneno: "",
     age: "",
+    gotra: "",
     gender: "",
     date: "",
   });
@@ -67,6 +71,7 @@ const Cart = () => {
       address: formData.get("address"),
       phoneno: formData.get("phoneno"),
       age: formData.get("age"),
+      gotra: formData.get("gotra"),
       cartItems: CartItem,
     };
 
@@ -94,7 +99,7 @@ const Cart = () => {
         <Row className="justify-content-center">
           <Col md={8}>
             {CartItem.length === 0 && (
-              <h1 className="no-items product">No Items are add in Cart</h1>
+              <h1 className="no-items product">No Sevas selected currently</h1>
             )}
             {CartItem.map((item) => {
               const productQty = item.price * item.qty;
@@ -142,11 +147,11 @@ const Cart = () => {
           </Col>
           <Col md={4}>
             <div className="cart-total">
-              <h2>Cart Summary</h2>
-              <div className=" d_flex">
+              <h2>Seva Summary</h2>
+              {/* <div className=" d_flex">
                 <h4>Total Price :</h4>
                 <h3>{`\u20B9${totalPrice}.00`}</h3>
-              </div>
+              </div> */}
               {/* Styled Checkout Button */}
               <Button
                 onClick={handleShow}
@@ -160,7 +165,7 @@ const Cart = () => {
                   fontSize: "16px",
                 }}
               >
-                Checkout
+                Enter Seva Details
               </Button>
             </div>
           </Col>
@@ -191,7 +196,7 @@ const Cart = () => {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your name"
+                placeholder="Enter the name"
                 value={orderData.name}
                 onChange={(e) =>
                   setOrderData((prevState) => ({
@@ -207,7 +212,7 @@ const Cart = () => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Enter the Devotee Email"
                 value={orderData.email}
                 onChange={(e) =>
                   setOrderData((prevState) => ({
@@ -220,10 +225,10 @@ const Cart = () => {
               {/* added name attribute */}
             </Form.Group>
             <Form.Group>
-              <Form.Label>Address</Form.Label>
+              <Form.Label>Date</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your address"
+                placeholder="Enter the Date"
                 value={orderData.address}
                 onChange={(e) =>
                   setOrderData((prevState) => ({
@@ -239,7 +244,7 @@ const Cart = () => {
               <Form.Label>Phone No</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your phone no"
+                placeholder="Enter the Devotee phone no"
                 value={orderData.phoneno}
                 onChange={(e) =>
                   setOrderData((prevState) => ({
@@ -252,10 +257,10 @@ const Cart = () => {
               {/* added name attribute */}
             </Form.Group>
             <Form.Group>
-              <Form.Label> Age </Form.Label>
+              <Form.Label> Gotra </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your age"
+                placeholder="Enter the Devotee gotra"
                 value={orderData.age}
                 onChange={(e) =>
                   setOrderData((prevState) => ({
@@ -267,6 +272,36 @@ const Cart = () => {
               />{" "}
               {/* added name attribute */}
             </Form.Group>
+            {/* <Form.Group>
+  <Form.Label>Date</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="Enter the date"
+    value={orderData.date}
+    onChange={(e) =>
+      setOrderData((prevState) => ({
+        ...prevState,
+        date: e.target.value,
+      }))
+    }
+    name="date"
+  />
+</Form.Group> */}
+            {/* <Form.Group>
+              <Form.Label> Gotra </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter the Devotee Gotra"
+                value={orderData.gotra}
+                onChange={(e) =>
+                  setOrderData((prevState) => ({
+                    ...prevState,
+                    gotra: e.target.value,
+                  }))
+                }
+                name="gotra"
+              />{" "}
+            </Form.Group> */}
             {/* ... [Any other form fields you need] */}
           </Form>
         </Modal.Body>
