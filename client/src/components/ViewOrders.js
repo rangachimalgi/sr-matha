@@ -26,8 +26,9 @@ function ViewOrders() {
   const sendReportsByEmail = async (orderId, Email) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/orders/${orderId}/send-reports-by-email`
+        `http://localhost:8082/api/orders/${orderId}/send-reports-by-email`
       );
+      console.log("url process", process.env.REACT_APP_API_URL);
       if (response.status === 200) {
         alert(`Reports sent to ${Email} successfully!`);
       } else {
@@ -66,7 +67,7 @@ function ViewOrders() {
   useEffect(() => {
     async function fetchOrders() {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders`);
+        const response = await axios.get('http://localhost:8082/api/orders');
         console.log('Fetched orders:', response.data);
         setOrders(response.data);
       } catch (error) {
@@ -129,7 +130,7 @@ function ViewOrders() {
                             <div key={report} style={{ position: "relative" }}>
                               <a
                                 className="styled-link"
-                                href={`${process.env.REACT_APP_API_URL}${report}`}
+                                href={`http://localhost:8080${report}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
@@ -154,7 +155,7 @@ function ViewOrders() {
                   {order.reports && order.reports.length > 0 ? (
                     <a
                       className="styled-link"
-                      href={`${process.env.REACT_APP_API_URL}/api/orders/${order._id}/download-reports`}
+                      href={`http://localhost:8082/api/orders/${order._id}/download-reports`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

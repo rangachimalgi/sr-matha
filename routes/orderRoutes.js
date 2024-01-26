@@ -57,8 +57,8 @@ router.put('/api/orders/:orderId', async (req, res) => {
   }
 });
 
-router.post('/:orderId/upload-report', upload.array('report'), uploadReport);
-router.get("/:orderId/download-reports", downloadReports);
-router.post("/:orderId/send-reports-by-email", sendReportsByEmail);
+router.post(`http://localhost:8082/:orderId/upload-report`, upload.array('report'), uploadReport);
+router.get(`http://localhost:8082/:orderId/download-reports`, downloadReports);
+router.post(`http://localhost:8082/:orderId/send-reports-by-email`, sendReportsByEmail);
 
 export default router;
