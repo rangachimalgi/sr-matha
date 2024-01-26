@@ -49,7 +49,7 @@ function ViewOrders() {
       await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
   
       // Now, make an API request to trigger the send-instant-message action
-      const response = await axios.post('http://localhost:8082/api/send-instant-message', {
+      const response = await axios.post('https://sr-matha.onrender.com/api/send-instant-message', {
         phoneNumber,
         message: 'Your instant message content here',
       });
