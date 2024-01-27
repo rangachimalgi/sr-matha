@@ -48,7 +48,7 @@ function ViewOrders() {
   
       await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
-      const apiUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8082';
+      const apiUrl = process.env.REACT_APP_API_BASE_URL || 'https://sr-matha.onrender.com/';
 
       console.log("api url",apiUrl);
   
