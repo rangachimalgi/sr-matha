@@ -99,9 +99,12 @@ cron.schedule('*/5 * * * *', () => {
 // Endpoint to send an instant message
 app.post('/api/send-instant-message', async (req, res) => {
 
-const accountSid = 'ACbb72d2166f8fef13938252b183f1950c';
-const authToken = 'dc014495211336d798a61b4a358fe9e7';
+const accountSid = process.env.TWILIO_ACCOUNT_SID;;
+const authToken = process.env.TWILIO_AUTH_TOKEN;;
 const client = new twilio(accountSid, authToken);
+
+console.log("TWILIO_ACCOUNT_SID:", process.env.TWILIO_ACCOUNT_SID);
+console.log("TWILIO_AUTH_TOKEN:", process.env.TWILIO_AUTH_TOKEN);
 
   const { phoneNumber, message } = req.body;
 
